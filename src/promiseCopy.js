@@ -13,13 +13,11 @@ Comme pour l'exercice précedent utiliser les api asynchrones basées sur des pr
 let source = process.argv[2]
 let dest = process.argv[3]
 
+if (process.argv.length !== 4) {
+    console.log('Usage : node promiseCopy.js source dest')
+    process.exit
+}
+
  fsPromises.copyFile(source, dest, COPYFILE_EXCL)
     .then(() => console.log('source.txt was copied to destination.txt'))
     .catch(() => console.log('The file could not be copied'))
-
-if (!isNaN(source) || !isNaN(dest)) {
-    console.log('Error: source<String> ; dest<String>')
-}
-if (process.argv.length !== 4) {
-    console.log('Usage : node promiseCopy.js source dest')
-}
